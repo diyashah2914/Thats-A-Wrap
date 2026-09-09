@@ -7,233 +7,101 @@
       "scenes": 0,
       "completed": 0,
       "script": ""
-    },
-    "2": {
-      "id": 2,
-      "name": "OS mock",
-      "description": "New film production.",
-      "scenes": 2,
-      "completed": 2,
-      "script": "",
-      "final_output": "media\\output\\project_2_final_film.mp4",
-      "final_gcs_uri": "gs://thats-a-wrap-project-e32c4376/projects/project_2/final/project_2_final_film.mp4"
     }
   },
-  "scenes": {
-    "1": {
-      "id": 1,
-      "projectId": 2,
-      "number": 1,
-      "title": "scene 1",
-      "description": "Scene description.",
-      "status": "complete",
-      "footage": [
-        "media\\input\\scene_1\\footage_accac38c81f1.mp4"
-      ],
-      "output": "media\\output\\1_final.mp4",
-      "breakdown": {},
-      "postProduction": {
-        "edit": {
-          "selected_take": "media\\input\\scene_1\\footage_accac38c81f1.mp4",
-          "selected_take_count": 1,
-          "pacing": "scene-aware pacing",
-          "continuity": "preserve visual continuity",
-          "editor_action": "Selected strongest available take and prepared continuity-safe edit."
-        },
-        "cinematography": [
-          "stable cinematic framing"
-        ],
-        "color_grade": "cinematic contrast",
-        "vfx": [
-          "clarity",
-          "vignette"
-        ],
-        "transitions": [
-          "fade in/out"
-        ],
-        "transition": "fade in/out",
-        "audio": [
-          "dialogue clarity",
-          "loudness normalization",
-          "protect emotional beats"
-        ],
-        "sound_execution": {
-          "audio_filter": "loudnorm",
-          "preserve_source_audio": true,
-          "music_ducking": true
-        },
-        "specialist_actions": {
-          "sound-agent": {
-            "speciality": "Dialogue and sound cleanup",
-            "recommendations": [
-              "Normalize dialogue loudness",
-              "Preserve original production audio",
-              "Duck music beneath dialogue"
-            ],
-            "execution": {
-              "audio_filter": "loudnorm",
-              "preserve_source_audio": true,
-              "music_ducking": true
-            }
-          },
-          "colour-agent": {
-            "speciality": "Cinematic colour treatment",
-            "recommendations": [
-              "Balance exposure",
-              "Preserve skin-tone consistency",
-              "Apply restrained cinematic contrast"
-            ],
-            "execution": {
-              "grade": "cinematic_contrast",
-              "contrast": 1.08,
-              "saturation": 1.04
-            }
-          },
-          "vfx-agent": {
-            "speciality": "Visual effects planning",
-            "recommendations": [
-              "Add restrained clarity",
-              "Use a subtle vignette",
-              "Avoid effects that obscure performance"
-            ],
-            "execution": {
-              "effects": [
-                "clarity",
-                "vignette"
-              ],
-              "intensity": "subtle"
-            }
-          }
-        },
-        "music": {
-          "enabled": true,
-          "track": "minimal_ambient",
-          "volume": 0.2,
-          "fade_in_seconds": 1.2,
-          "fade_out_seconds": 1.5,
-          "reason": "Scene-aware music selection with dialogue-safe mixing.",
-          "source": "AI Music Agent selected in-app original music bed"
-        },
-        "ai_direction": {
-          "scene_context": "Scene description.",
-          "intent": "Apply coordinated agent decisions while preserving the original performance.",
-          "specialists_completed": [
-            "sound-agent",
-            "colour-agent",
-            "vfx-agent"
-          ]
-        }
-      },
-      "gcsUri": "gs://thats-a-wrap-project-e32c4376/scenes/scene_01/1_final.mp4"
-    },
-    "2": {
-      "id": 2,
-      "projectId": 2,
-      "number": 2,
-      "title": "maya 2",
-      "description": "Scene description.",
-      "status": "complete",
-      "footage": [
-        "media\\input\\scene_2\\footage_d2fbe147a2d0.mp4"
-      ],
-      "output": "media\\output\\2_final.mp4",
-      "breakdown": {},
-      "postProduction": {
-        "edit": {
-          "selected_take": "media\\input\\scene_2\\footage_d2fbe147a2d0.mp4",
-          "selected_take_count": 1,
-          "pacing": "scene-aware pacing",
-          "continuity": "preserve visual continuity",
-          "editor_action": "Selected strongest available take and prepared continuity-safe edit."
-        },
-        "cinematography": [
-          "stable cinematic framing"
-        ],
-        "color_grade": "cinematic contrast",
-        "vfx": [
-          "clarity",
-          "vignette"
-        ],
-        "transitions": [
-          "fade in/out"
-        ],
-        "transition": "fade in/out",
-        "audio": [
-          "dialogue clarity",
-          "loudness normalization",
-          "protect emotional beats"
-        ],
-        "sound_execution": {
-          "audio_filter": "loudnorm",
-          "preserve_source_audio": true,
-          "music_ducking": true
-        },
-        "specialist_actions": {
-          "sound-agent": {
-            "speciality": "Dialogue and sound cleanup",
-            "recommendations": [
-              "Normalize dialogue loudness",
-              "Preserve original production audio",
-              "Duck music beneath dialogue"
-            ],
-            "execution": {
-              "audio_filter": "loudnorm",
-              "preserve_source_audio": true,
-              "music_ducking": true
-            }
-          },
-          "colour-agent": {
-            "speciality": "Cinematic colour treatment",
-            "recommendations": [
-              "Balance exposure",
-              "Preserve skin-tone consistency",
-              "Apply restrained cinematic contrast"
-            ],
-            "execution": {
-              "grade": "cinematic_contrast",
-              "contrast": 1.08,
-              "saturation": 1.04
-            }
-          },
-          "vfx-agent": {
-            "speciality": "Visual effects planning",
-            "recommendations": [
-              "Add restrained clarity",
-              "Use a subtle vignette",
-              "Avoid effects that obscure performance"
-            ],
-            "execution": {
-              "effects": [
-                "clarity",
-                "vignette"
-              ],
-              "intensity": "subtle"
-            }
-          }
-        },
-        "music": {
-          "enabled": true,
-          "track": "minimal_ambient",
-          "volume": 0.2,
-          "fade_in_seconds": 1.2,
-          "fade_out_seconds": 1.5,
-          "reason": "Scene-aware music selection with dialogue-safe mixing.",
-          "source": "AI Music Agent selected in-app original music bed"
-        },
-        "ai_direction": {
-          "scene_context": "Scene description.",
-          "intent": "Apply coordinated agent decisions while preserving the original performance.",
-          "specialists_completed": [
-            "sound-agent",
-            "colour-agent",
-            "vfx-agent"
-          ]
-        }
-      },
-      "gcsUri": "gs://thats-a-wrap-project-e32c4376/scenes/scene_02/2_final.mp4"
-    }
-  },
+  "scenes": {},
   "activities": [
+    {
+      "id": 1788913540291855,
+      "title": "Project deleted",
+      "description": "Project 2 was deleted.",
+      "time": "00:25 UTC",
+      "icon": "×"
+    },
+    {
+      "id": 1788913331849628,
+      "title": "Scene 03 approved",
+      "description": "Scene is ready for final assembly.",
+      "time": "00:22 UTC",
+      "icon": "✓"
+    },
+    {
+      "id": 1788913256040148,
+      "title": "Scene 03 ADK orchestration started",
+      "description": "Gemini/ADK is inspecting live Grafana telemetry in parallel with media processing.",
+      "time": "00:20 UTC",
+      "icon": "✦"
+    },
+    {
+      "id": 1788913256015052,
+      "title": "Scene 03 post-production started",
+      "description": "AI is selecting takes and directing color, VFX, cinematography, transitions and audio.",
+      "time": "00:20 UTC",
+      "icon": "✦"
+    },
+    {
+      "id": 1788913252857149,
+      "title": "Scene 02 approved",
+      "description": "Scene is ready for final assembly.",
+      "time": "00:20 UTC",
+      "icon": "✓"
+    },
+    {
+      "id": 1788913250692471,
+      "title": "Footage uploaded",
+      "description": "3.mp4 attached to Scene 03.",
+      "time": "00:20 UTC",
+      "icon": "↑"
+    },
+    {
+      "id": 1788913243127469,
+      "title": "Created Scene 03",
+      "description": "scene 3",
+      "time": "00:20 UTC",
+      "icon": "+"
+    },
+    {
+      "id": 1788912991772458,
+      "title": "Scene 01 ADK orchestration started",
+      "description": "Gemini/ADK is inspecting live Grafana telemetry in parallel with media processing.",
+      "time": "00:16 UTC",
+      "icon": "✦"
+    },
+    {
+      "id": 1788912991749836,
+      "title": "Scene 01 post-production started",
+      "description": "AI is selecting takes and directing color, VFX, cinematography, transitions and audio.",
+      "time": "00:16 UTC",
+      "icon": "✦"
+    },
+    {
+      "id": 1788912989122025,
+      "title": "Footage uploaded",
+      "description": "1.mp4 attached to Scene 02.",
+      "time": "00:16 UTC",
+      "icon": "↑"
+    },
+    {
+      "id": 1788912980525866,
+      "title": "Scene 02 ADK orchestration started",
+      "description": "Gemini/ADK is inspecting live Grafana telemetry in parallel with media processing.",
+      "time": "00:16 UTC",
+      "icon": "✦"
+    },
+    {
+      "id": 1788912980503687,
+      "title": "Scene 02 post-production started",
+      "description": "AI is selecting takes and directing color, VFX, cinematography, transitions and audio.",
+      "time": "00:16 UTC",
+      "icon": "✦"
+    },
+    {
+      "id": 1788912978881891,
+      "title": "Footage uploaded",
+      "description": "5.mp4 attached to Scene 01.",
+      "time": "00:16 UTC",
+      "icon": "↑"
+    },
     {
       "id": 1788910141136895,
       "title": "Scene 02 approved",
@@ -327,6 +195,630 @@
     }
   ],
   "diagnostic_events": [
+    {
+      "id": 1788913540291855,
+      "timestamp": "2026-09-09T00:25:40.304602+00:00",
+      "level": "INFO",
+      "source": "application",
+      "title": "Project deleted",
+      "message": "Project 2 was deleted.",
+      "details": {},
+      "trace_id": null,
+      "job_id": null,
+      "scene_id": null
+    },
+    {
+      "id": 1788913331849628,
+      "timestamp": "2026-09-09T00:22:11.862777+00:00",
+      "level": "INFO",
+      "source": "application",
+      "title": "Scene 03 approved",
+      "message": "Scene is ready for final assembly.",
+      "details": {},
+      "trace_id": null,
+      "job_id": null,
+      "scene_id": null
+    },
+    {
+      "timestamp": "2026-09-09T00:21:27.848420+00:00",
+      "level": "INFO",
+      "source": "adk",
+      "title": "ADK production orchestration",
+      "message": "ADK orchestration completed with Grafana MCP activity.",
+      "details": {
+        "job_id": "job_2ea387cf",
+        "scene_id": 3,
+        "executed": true,
+        "event_count": 5,
+        "function_call_count": 2,
+        "function_response_count": 2,
+        "mcp_invoked": true,
+        "mcp_tool_calls": [
+          {
+            "name": "grafana__list_datasources",
+            "id": "call_303102",
+            "args": {
+              "limit": 10
+            }
+          },
+          {
+            "name": "grafana__query_loki_logs",
+            "id": "call_276648",
+            "args": {
+              "datasourceUid": "grafanacloud-logs",
+              "logql": "{job=\"production\"} |= \"job_2ea387cf\""
+            }
+          }
+        ],
+        "error": null,
+        "final_response": "### Observability Inspection\n- **Datasource Check:** Queried Loki logs (`grafanacloud-logs`) for Job ID `job_2ea387cf`.\n- **Telemetry Result:** No matching Grafana telemetry was returned.\n\n---\n\n### Scene Recommendation (Job: `job_2ea387cf` | Scene: `3`)\n1. **Pipeline Readiness:** Since no prior processing logs or failure telemetry exist for this job, treat this execution as a fresh run.\n2. **Execution Strategy:** Proceed with standard stage ingestion across Director, Editor, Sound, Colour, and VFX pipelines according to the Scene 3 breakdown.\n3. **Telemetry & Validation:** Ensure processing workers attach `job_id=\"job_2ea387cf\"` and `scene_id=\"3\"` labels during FFmpeg rendering, audio mastering, and QC checks to maintain full trace and log observability."
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:21:21.424181+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Qc",
+      "message": "Validating the final media container and audio/video alignment.",
+      "details": {
+        "stage": "QC",
+        "progress": 90
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:21:09.959469+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Rendering",
+      "message": "FFmpeg rendering the processed scene.",
+      "details": {
+        "stage": "RENDERING",
+        "progress": 75
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:21:09.930488+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Post Production",
+      "message": "Combining agent decisions into the render plan.",
+      "details": {
+        "stage": "POST_PRODUCTION",
+        "progress": 65
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:21:09.902170+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Sound",
+      "message": "Sound, colour and VFX specialists executing their decisions.",
+      "details": {
+        "stage": "SOUND",
+        "progress": 52
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:20:56.342942+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Music",
+      "message": "Music agent selecting the scene music direction.",
+      "details": {
+        "stage": "MUSIC",
+        "progress": 45
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:20:56.317873+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Director",
+      "message": "Director and specialist agents planning the scene.",
+      "details": {
+        "stage": "DIRECTOR",
+        "progress": 35
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:20:56.206605+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Editor",
+      "message": "Editor agent selecting the strongest available take.",
+      "details": {
+        "stage": "EDITOR",
+        "progress": 25
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:20:56.128923+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Ai Analysis",
+      "message": "Validating source footage.",
+      "details": {
+        "stage": "AI_ANALYSIS",
+        "progress": 10
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "timestamp": "2026-09-09T00:20:56.097960+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Ai Analysis",
+      "message": "Production workflow started; validating footage and preparing AI decisions.",
+      "details": {
+        "stage": "AI_ANALYSIS",
+        "progress": 5
+      },
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": 3
+    },
+    {
+      "id": 1788913256040148,
+      "timestamp": "2026-09-09T00:20:56.058223+00:00",
+      "level": "INFO",
+      "source": "adk",
+      "title": "Scene 03 ADK orchestration started",
+      "message": "Gemini/ADK is inspecting live Grafana telemetry in parallel with media processing.",
+      "details": {},
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": "3"
+    },
+    {
+      "id": 1788913256015052,
+      "timestamp": "2026-09-09T00:20:56.025559+00:00",
+      "level": "INFO",
+      "source": "production",
+      "title": "Scene 03 post-production started",
+      "message": "AI is selecting takes and directing color, VFX, cinematography, transitions and audio.",
+      "details": {},
+      "trace_id": null,
+      "job_id": "job_2ea387cf",
+      "scene_id": "3"
+    },
+    {
+      "id": 1788913252857149,
+      "timestamp": "2026-09-09T00:20:52.866876+00:00",
+      "level": "INFO",
+      "source": "application",
+      "title": "Scene 02 approved",
+      "message": "Scene is ready for final assembly.",
+      "details": {},
+      "trace_id": null,
+      "job_id": null,
+      "scene_id": null
+    },
+    {
+      "id": 1788913250692471,
+      "timestamp": "2026-09-09T00:20:50.703982+00:00",
+      "level": "INFO",
+      "source": "application",
+      "title": "Footage uploaded",
+      "message": "3.mp4 attached to Scene 03.",
+      "details": {},
+      "trace_id": null,
+      "job_id": null,
+      "scene_id": null
+    },
+    {
+      "id": 1788913243127469,
+      "timestamp": "2026-09-09T00:20:43.138902+00:00",
+      "level": "INFO",
+      "source": "application",
+      "title": "Created Scene 03",
+      "message": "scene 3",
+      "details": {},
+      "trace_id": null,
+      "job_id": null,
+      "scene_id": null
+    },
+    {
+      "timestamp": "2026-09-09T00:16:47.053020+00:00",
+      "level": "WARN",
+      "source": "adk",
+      "title": "ADK production orchestration",
+      "message": "ADK orchestration completed with Grafana MCP activity.",
+      "details": {
+        "job_id": "job_92946969",
+        "scene_id": 1,
+        "executed": false,
+        "event_count": 3,
+        "function_call_count": 1,
+        "function_response_count": 1,
+        "mcp_invoked": true,
+        "mcp_tool_calls": [
+          {
+            "name": "grafana__list_datasources",
+            "id": "call_394066",
+            "args": {
+              "limit": 10
+            }
+          }
+        ],
+        "error": "_ResourceExhaustedError: \nOn how to mitigate this issue, please refer to:\n\nhttps://google.github.io/adk-docs/agents/models/google-gemini/#error-code-429-resource_exhausted\n\n\n429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.7-flash\\nPlease retry in 12.416856786s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.7-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '12s'}]}}",
+        "final_response": ""
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:41.146489+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Qc",
+      "message": "Validating the final media container and audio/video alignment.",
+      "details": {
+        "stage": "QC",
+        "progress": 90
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:38.598412+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Qc",
+      "message": "Validating the final media container and audio/video alignment.",
+      "details": {
+        "stage": "QC",
+        "progress": 90
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:35.787113+00:00",
+      "level": "WARN",
+      "source": "adk",
+      "title": "ADK production orchestration",
+      "message": "ADK orchestration completed without a Grafana MCP tool call.",
+      "details": {
+        "job_id": "job_51bca29d",
+        "scene_id": 2,
+        "executed": false,
+        "event_count": 1,
+        "function_call_count": 0,
+        "function_response_count": 0,
+        "mcp_invoked": false,
+        "mcp_tool_calls": [],
+        "error": "_ResourceExhaustedError: \nOn how to mitigate this issue, please refer to:\n\nhttps://google.github.io/adk-docs/agents/models/google-gemini/#error-code-429-resource_exhausted\n\n\n429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.7-flash\\nPlease retry in 23.717820532s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.7-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}",
+        "final_response": ""
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:32.567004+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Rendering",
+      "message": "FFmpeg rendering the processed scene.",
+      "details": {
+        "stage": "RENDERING",
+        "progress": 75
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:32.545095+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Post Production",
+      "message": "Combining agent decisions into the render plan.",
+      "details": {
+        "stage": "POST_PRODUCTION",
+        "progress": 65
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:32.523692+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Sound",
+      "message": "Sound, colour and VFX specialists executing their decisions.",
+      "details": {
+        "stage": "SOUND",
+        "progress": 52
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:32.356989+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Rendering",
+      "message": "FFmpeg rendering the processed scene.",
+      "details": {
+        "stage": "RENDERING",
+        "progress": 75
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:32.341362+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Post Production",
+      "message": "Combining agent decisions into the render plan.",
+      "details": {
+        "stage": "POST_PRODUCTION",
+        "progress": 65
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:32.323926+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Sound",
+      "message": "Sound, colour and VFX specialists executing their decisions.",
+      "details": {
+        "stage": "SOUND",
+        "progress": 52
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:31.990295+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Music",
+      "message": "Music agent selecting the scene music direction.",
+      "details": {
+        "stage": "MUSIC",
+        "progress": 45
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:31.971205+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Director",
+      "message": "Director and specialist agents planning the scene.",
+      "details": {
+        "stage": "DIRECTOR",
+        "progress": 35
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:31.952595+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Editor",
+      "message": "Editor agent selecting the strongest available take.",
+      "details": {
+        "stage": "EDITOR",
+        "progress": 25
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:31.828902+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Ai Analysis",
+      "message": "Validating source footage.",
+      "details": {
+        "stage": "AI_ANALYSIS",
+        "progress": 10
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "timestamp": "2026-09-09T00:16:31.805444+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Ai Analysis",
+      "message": "Production workflow started; validating footage and preparing AI decisions.",
+      "details": {
+        "stage": "AI_ANALYSIS",
+        "progress": 5
+      },
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": 1
+    },
+    {
+      "id": 1788912991772458,
+      "timestamp": "2026-09-09T00:16:31.786258+00:00",
+      "level": "INFO",
+      "source": "adk",
+      "title": "Scene 01 ADK orchestration started",
+      "message": "Gemini/ADK is inspecting live Grafana telemetry in parallel with media processing.",
+      "details": {},
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": "1"
+    },
+    {
+      "id": 1788912991749836,
+      "timestamp": "2026-09-09T00:16:31.759492+00:00",
+      "level": "INFO",
+      "source": "production",
+      "title": "Scene 01 post-production started",
+      "message": "AI is selecting takes and directing color, VFX, cinematography, transitions and audio.",
+      "details": {},
+      "trace_id": null,
+      "job_id": "job_92946969",
+      "scene_id": "1"
+    },
+    {
+      "id": 1788912989122025,
+      "timestamp": "2026-09-09T00:16:29.132133+00:00",
+      "level": "INFO",
+      "source": "application",
+      "title": "Footage uploaded",
+      "message": "1.mp4 attached to Scene 02.",
+      "details": {},
+      "trace_id": null,
+      "job_id": null,
+      "scene_id": null
+    },
+    {
+      "timestamp": "2026-09-09T00:16:20.848184+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Music",
+      "message": "Music agent selecting the scene music direction.",
+      "details": {
+        "stage": "MUSIC",
+        "progress": 45
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:20.826947+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Director",
+      "message": "Director and specialist agents planning the scene.",
+      "details": {
+        "stage": "DIRECTOR",
+        "progress": 35
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:20.726050+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Editor",
+      "message": "Editor agent selecting the strongest available take.",
+      "details": {
+        "stage": "EDITOR",
+        "progress": 25
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:20.609921+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Ai Analysis",
+      "message": "Validating source footage.",
+      "details": {
+        "stage": "AI_ANALYSIS",
+        "progress": 10
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "timestamp": "2026-09-09T00:16:20.575949+00:00",
+      "level": "INFO",
+      "source": "workflow",
+      "title": "Ai Analysis",
+      "message": "Production workflow started; validating footage and preparing AI decisions.",
+      "details": {
+        "stage": "AI_ANALYSIS",
+        "progress": 5
+      },
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": 2
+    },
+    {
+      "id": 1788912980525866,
+      "timestamp": "2026-09-09T00:16:20.542383+00:00",
+      "level": "INFO",
+      "source": "adk",
+      "title": "Scene 02 ADK orchestration started",
+      "message": "Gemini/ADK is inspecting live Grafana telemetry in parallel with media processing.",
+      "details": {},
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": "2"
+    },
+    {
+      "id": 1788912980503687,
+      "timestamp": "2026-09-09T00:16:20.512950+00:00",
+      "level": "INFO",
+      "source": "production",
+      "title": "Scene 02 post-production started",
+      "message": "AI is selecting takes and directing color, VFX, cinematography, transitions and audio.",
+      "details": {},
+      "trace_id": null,
+      "job_id": "job_51bca29d",
+      "scene_id": "2"
+    },
+    {
+      "id": 1788912978881891,
+      "timestamp": "2026-09-09T00:16:18.892400+00:00",
+      "level": "INFO",
+      "source": "application",
+      "title": "Footage uploaded",
+      "message": "5.mp4 attached to Scene 01.",
+      "details": {},
+      "trace_id": null,
+      "job_id": null,
+      "scene_id": null
+    },
     {
       "id": 1788910141136895,
       "timestamp": "2026-09-08T23:29:01.146350+00:00",
@@ -1918,6 +2410,655 @@
           "fade_in_seconds": 1.2,
           "fade_out_seconds": 1.5,
           "reason": "Scene-aware music selection with dialogue-safe mixing.",
+          "source": "AI Music Agent selected in-app original music bed"
+        },
+        "ai_direction": {
+          "scene_context": "Scene description.",
+          "intent": "Apply coordinated agent decisions while preserving the original performance.",
+          "specialists_completed": [
+            "sound-agent",
+            "colour-agent",
+            "vfx-agent"
+          ]
+        }
+      }
+    },
+    "job_51bca29d": {
+      "job_id": "job_51bca29d",
+      "scene_id": "2",
+      "status": "COMPLETED",
+      "stage": "COMPLETED",
+      "progress": 100,
+      "message": "Scene passed media QC and is ready for cloud upload/review.",
+      "updated_at": "2026-09-09T00:16:41.206404+00:00",
+      "error_code": null,
+      "input_files": [
+        "media\\input\\scene_2\\footage_d2fbe147a2d0.mp4"
+      ],
+      "output": "media\\output\\2_final.mp4",
+      "error": null,
+      "retry_count": 0,
+      "created_at": "2026-09-09T00:16:20.486179+00:00",
+      "started_at": "2026-09-09T00:16:20.575949+00:00",
+      "completed_at": "2026-09-09T00:16:41.206404+00:00",
+      "decision": {
+        "scene_id": "2",
+        "selected_takes": [
+          "media\\input\\scene_2\\footage_d2fbe147a2d0.mp4"
+        ],
+        "cuts": [],
+        "transitions": [],
+        "audio_plan": [
+          "Preserve dialogue clarity",
+          "Normalize final mix"
+        ],
+        "colour_plan": [
+          "Maintain consistent cinematic grade"
+        ],
+        "notes": [
+          "AI editor recommendation generated; human approval remains required."
+        ],
+        "take_scores": [
+          {
+            "take_id": "media\\input\\scene_2\\footage_d2fbe147a2d0.mp4",
+            "score": 94.0,
+            "reason": "Best available deterministic take ranking for the local demo.",
+            "issues": []
+          }
+        ]
+      },
+      "specialist_decisions": [
+        {
+          "agent_id": "sound-agent",
+          "scene_id": "2",
+          "status": "completed",
+          "summary": "Dialogue and sound cleanup agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Dialogue and sound cleanup",
+            "recommendations": [
+              "Normalize dialogue loudness",
+              "Preserve original production audio",
+              "Duck music beneath dialogue"
+            ],
+            "execution": {
+              "audio_filter": "loudnorm",
+              "preserve_source_audio": true,
+              "music_ducking": true
+            }
+          }
+        },
+        {
+          "agent_id": "colour-agent",
+          "scene_id": "2",
+          "status": "completed",
+          "summary": "Cinematic colour treatment agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Cinematic colour treatment",
+            "recommendations": [
+              "Balance exposure",
+              "Preserve skin-tone consistency",
+              "Apply restrained cinematic contrast"
+            ],
+            "execution": {
+              "grade": "cinematic_contrast",
+              "contrast": 1.08,
+              "saturation": 1.04
+            }
+          }
+        },
+        {
+          "agent_id": "vfx-agent",
+          "scene_id": "2",
+          "status": "completed",
+          "summary": "Visual effects planning agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Visual effects planning",
+            "recommendations": [
+              "Add restrained clarity",
+              "Use a subtle vignette",
+              "Avoid effects that obscure performance"
+            ],
+            "execution": {
+              "effects": [
+                "clarity",
+                "vignette"
+              ],
+              "intensity": "subtle"
+            }
+          }
+        }
+      ],
+      "qc": {
+        "job_id": "job_51bca29d",
+        "passed": true,
+        "checks": {
+          "exists": true,
+          "readable": true,
+          "has_video": true,
+          "has_audio": true,
+          "audio_video_aligned": true
+        },
+        "duration_seconds": 25.967,
+        "video_duration_seconds": 25.966667,
+        "audio_duration_seconds": 25.967,
+        "duration_difference_seconds": 0.00033299999999769625,
+        "message": "QC passed. Final container is readable and audio/video streams are aligned."
+      },
+      "post_production_plan": {
+        "edit": {
+          "selected_take": "media\\input\\scene_2\\footage_d2fbe147a2d0.mp4",
+          "selected_take_count": 1,
+          "pacing": "scene-aware pacing",
+          "continuity": "preserve visual continuity",
+          "editor_action": "Selected strongest available take and prepared continuity-safe edit."
+        },
+        "cinematography": [
+          "stable cinematic framing"
+        ],
+        "color_grade": "cinematic contrast",
+        "vfx": [
+          "clarity",
+          "vignette"
+        ],
+        "transitions": [
+          "fade in/out"
+        ],
+        "transition": "fade in/out",
+        "audio": [
+          "dialogue clarity",
+          "loudness normalization",
+          "protect emotional beats"
+        ],
+        "sound_execution": {
+          "audio_filter": "loudnorm",
+          "preserve_source_audio": true,
+          "music_ducking": true
+        },
+        "specialist_actions": {
+          "sound-agent": {
+            "speciality": "Dialogue and sound cleanup",
+            "recommendations": [
+              "Normalize dialogue loudness",
+              "Preserve original production audio",
+              "Duck music beneath dialogue"
+            ],
+            "execution": {
+              "audio_filter": "loudnorm",
+              "preserve_source_audio": true,
+              "music_ducking": true
+            }
+          },
+          "colour-agent": {
+            "speciality": "Cinematic colour treatment",
+            "recommendations": [
+              "Balance exposure",
+              "Preserve skin-tone consistency",
+              "Apply restrained cinematic contrast"
+            ],
+            "execution": {
+              "grade": "cinematic_contrast",
+              "contrast": 1.08,
+              "saturation": 1.04
+            }
+          },
+          "vfx-agent": {
+            "speciality": "Visual effects planning",
+            "recommendations": [
+              "Add restrained clarity",
+              "Use a subtle vignette",
+              "Avoid effects that obscure performance"
+            ],
+            "execution": {
+              "effects": [
+                "clarity",
+                "vignette"
+              ],
+              "intensity": "subtle"
+            }
+          }
+        },
+        "music": {
+          "enabled": true,
+          "track": "minimal_ambient",
+          "volume": 0.25,
+          "fade_in_seconds": 2.0,
+          "fade_out_seconds": 2.0,
+          "reason": "Subtle minimal ambient background provides emotional grounding while ensuring dialogue clarity.",
+          "source": "AI Music Agent selected in-app original music bed"
+        },
+        "ai_direction": {
+          "scene_context": "Scene description.",
+          "intent": "Apply coordinated agent decisions while preserving the original performance.",
+          "specialists_completed": [
+            "sound-agent",
+            "colour-agent",
+            "vfx-agent"
+          ]
+        }
+      }
+    },
+    "job_92946969": {
+      "job_id": "job_92946969",
+      "scene_id": "1",
+      "status": "COMPLETED",
+      "stage": "COMPLETED",
+      "progress": 100,
+      "message": "Scene passed media QC and is ready for cloud upload/review.",
+      "updated_at": "2026-09-09T00:16:38.663571+00:00",
+      "error_code": null,
+      "input_files": [
+        "media\\input\\scene_1\\footage_accac38c81f1.mp4",
+        "media\\input\\scene_1\\footage_0334a7b7ff9d.mp4"
+      ],
+      "output": "media\\output\\1_final.mp4",
+      "error": null,
+      "retry_count": 0,
+      "created_at": "2026-09-09T00:16:31.729782+00:00",
+      "started_at": "2026-09-09T00:16:31.805444+00:00",
+      "completed_at": "2026-09-09T00:16:38.663571+00:00",
+      "decision": {
+        "scene_id": "1",
+        "selected_takes": [
+          "media\\input\\scene_1\\footage_accac38c81f1.mp4"
+        ],
+        "cuts": [],
+        "transitions": [],
+        "audio_plan": [
+          "Preserve dialogue clarity",
+          "Normalize final mix"
+        ],
+        "colour_plan": [
+          "Maintain consistent cinematic grade"
+        ],
+        "notes": [
+          "AI editor recommendation generated; human approval remains required."
+        ],
+        "take_scores": [
+          {
+            "take_id": "media\\input\\scene_1\\footage_accac38c81f1.mp4",
+            "score": 94.0,
+            "reason": "Best available deterministic take ranking for the local demo.",
+            "issues": []
+          },
+          {
+            "take_id": "media\\input\\scene_1\\footage_0334a7b7ff9d.mp4",
+            "score": 89.0,
+            "reason": "Best available deterministic take ranking for the local demo.",
+            "issues": []
+          }
+        ]
+      },
+      "specialist_decisions": [
+        {
+          "agent_id": "sound-agent",
+          "scene_id": "1",
+          "status": "completed",
+          "summary": "Dialogue and sound cleanup agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Dialogue and sound cleanup",
+            "recommendations": [
+              "Normalize dialogue loudness",
+              "Preserve original production audio",
+              "Duck music beneath dialogue"
+            ],
+            "execution": {
+              "audio_filter": "loudnorm",
+              "preserve_source_audio": true,
+              "music_ducking": true
+            }
+          }
+        },
+        {
+          "agent_id": "colour-agent",
+          "scene_id": "1",
+          "status": "completed",
+          "summary": "Cinematic colour treatment agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Cinematic colour treatment",
+            "recommendations": [
+              "Balance exposure",
+              "Preserve skin-tone consistency",
+              "Apply restrained cinematic contrast"
+            ],
+            "execution": {
+              "grade": "cinematic_contrast",
+              "contrast": 1.08,
+              "saturation": 1.04
+            }
+          }
+        },
+        {
+          "agent_id": "vfx-agent",
+          "scene_id": "1",
+          "status": "completed",
+          "summary": "Visual effects planning agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Visual effects planning",
+            "recommendations": [
+              "Add restrained clarity",
+              "Use a subtle vignette",
+              "Avoid effects that obscure performance"
+            ],
+            "execution": {
+              "effects": [
+                "clarity",
+                "vignette"
+              ],
+              "intensity": "subtle"
+            }
+          }
+        }
+      ],
+      "qc": {
+        "job_id": "job_92946969",
+        "passed": true,
+        "checks": {
+          "exists": true,
+          "readable": true,
+          "has_video": true,
+          "has_audio": true,
+          "audio_video_aligned": true
+        },
+        "duration_seconds": 19.0,
+        "video_duration_seconds": 19.0,
+        "audio_duration_seconds": 19.0,
+        "duration_difference_seconds": 0.0,
+        "message": "QC passed. Final container is readable and audio/video streams are aligned."
+      },
+      "post_production_plan": {
+        "edit": {
+          "selected_take": "media\\input\\scene_1\\footage_accac38c81f1.mp4",
+          "selected_take_count": 1,
+          "pacing": "scene-aware pacing",
+          "continuity": "preserve visual continuity",
+          "editor_action": "Selected strongest available take and prepared continuity-safe edit."
+        },
+        "cinematography": [
+          "stable cinematic framing"
+        ],
+        "color_grade": "cinematic contrast",
+        "vfx": [
+          "clarity",
+          "vignette"
+        ],
+        "transitions": [
+          "fade in/out"
+        ],
+        "transition": "fade in/out",
+        "audio": [
+          "dialogue clarity",
+          "loudness normalization",
+          "protect emotional beats"
+        ],
+        "sound_execution": {
+          "audio_filter": "loudnorm",
+          "preserve_source_audio": true,
+          "music_ducking": true
+        },
+        "specialist_actions": {
+          "sound-agent": {
+            "speciality": "Dialogue and sound cleanup",
+            "recommendations": [
+              "Normalize dialogue loudness",
+              "Preserve original production audio",
+              "Duck music beneath dialogue"
+            ],
+            "execution": {
+              "audio_filter": "loudnorm",
+              "preserve_source_audio": true,
+              "music_ducking": true
+            }
+          },
+          "colour-agent": {
+            "speciality": "Cinematic colour treatment",
+            "recommendations": [
+              "Balance exposure",
+              "Preserve skin-tone consistency",
+              "Apply restrained cinematic contrast"
+            ],
+            "execution": {
+              "grade": "cinematic_contrast",
+              "contrast": 1.08,
+              "saturation": 1.04
+            }
+          },
+          "vfx-agent": {
+            "speciality": "Visual effects planning",
+            "recommendations": [
+              "Add restrained clarity",
+              "Use a subtle vignette",
+              "Avoid effects that obscure performance"
+            ],
+            "execution": {
+              "effects": [
+                "clarity",
+                "vignette"
+              ],
+              "intensity": "subtle"
+            }
+          }
+        },
+        "music": {
+          "enabled": true,
+          "track": "minimal_ambient",
+          "volume": 0.2,
+          "fade_in_seconds": 1.2,
+          "fade_out_seconds": 1.5,
+          "reason": "Scene-aware music selection with dialogue-safe mixing.",
+          "source": "AI Music Agent selected in-app original music bed"
+        },
+        "ai_direction": {
+          "scene_context": "Scene description.",
+          "intent": "Apply coordinated agent decisions while preserving the original performance.",
+          "specialists_completed": [
+            "sound-agent",
+            "colour-agent",
+            "vfx-agent"
+          ]
+        }
+      }
+    },
+    "job_2ea387cf": {
+      "job_id": "job_2ea387cf",
+      "scene_id": "3",
+      "status": "COMPLETED",
+      "stage": "COMPLETED",
+      "progress": 100,
+      "message": "Scene passed media QC and is ready for cloud upload/review.",
+      "updated_at": "2026-09-09T00:21:21.498496+00:00",
+      "error_code": null,
+      "input_files": [
+        "media\\input\\scene_3\\footage_98bf18bb36b5.mp4"
+      ],
+      "output": "media\\output\\3_final.mp4",
+      "error": null,
+      "retry_count": 0,
+      "created_at": "2026-09-09T00:20:55.992502+00:00",
+      "started_at": "2026-09-09T00:20:56.097960+00:00",
+      "completed_at": "2026-09-09T00:21:21.498496+00:00",
+      "decision": {
+        "scene_id": "3",
+        "selected_takes": [
+          "media\\input\\scene_3\\footage_98bf18bb36b5.mp4"
+        ],
+        "cuts": [],
+        "transitions": [],
+        "audio_plan": [
+          "Preserve dialogue clarity",
+          "Normalize final mix"
+        ],
+        "colour_plan": [
+          "Maintain consistent cinematic grade"
+        ],
+        "notes": [
+          "AI editor recommendation generated; human approval remains required."
+        ],
+        "take_scores": [
+          {
+            "take_id": "media\\input\\scene_3\\footage_98bf18bb36b5.mp4",
+            "score": 94.0,
+            "reason": "Best available deterministic take ranking for the local demo.",
+            "issues": []
+          }
+        ]
+      },
+      "specialist_decisions": [
+        {
+          "agent_id": "sound-agent",
+          "scene_id": "3",
+          "status": "completed",
+          "summary": "Dialogue and sound cleanup agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Dialogue and sound cleanup",
+            "recommendations": [
+              "Normalize dialogue loudness",
+              "Preserve original production audio",
+              "Duck music beneath dialogue"
+            ],
+            "execution": {
+              "audio_filter": "loudnorm",
+              "preserve_source_audio": true,
+              "music_ducking": true
+            }
+          }
+        },
+        {
+          "agent_id": "colour-agent",
+          "scene_id": "3",
+          "status": "completed",
+          "summary": "Cinematic colour treatment agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Cinematic colour treatment",
+            "recommendations": [
+              "Balance exposure",
+              "Preserve skin-tone consistency",
+              "Apply restrained cinematic contrast"
+            ],
+            "execution": {
+              "grade": "cinematic_contrast",
+              "contrast": 1.08,
+              "saturation": 1.04
+            }
+          }
+        },
+        {
+          "agent_id": "vfx-agent",
+          "scene_id": "3",
+          "status": "completed",
+          "summary": "Visual effects planning agent executed a scene-specific treatment plan.",
+          "payload": {
+            "speciality": "Visual effects planning",
+            "recommendations": [
+              "Add restrained clarity",
+              "Use a subtle vignette",
+              "Avoid effects that obscure performance"
+            ],
+            "execution": {
+              "effects": [
+                "clarity",
+                "vignette"
+              ],
+              "intensity": "subtle"
+            }
+          }
+        }
+      ],
+      "qc": {
+        "job_id": "job_2ea387cf",
+        "passed": true,
+        "checks": {
+          "exists": true,
+          "readable": true,
+          "has_video": true,
+          "has_audio": true,
+          "audio_video_aligned": true
+        },
+        "duration_seconds": 41.4,
+        "video_duration_seconds": 41.4,
+        "audio_duration_seconds": 41.4,
+        "duration_difference_seconds": 0.0,
+        "message": "QC passed. Final container is readable and audio/video streams are aligned."
+      },
+      "post_production_plan": {
+        "edit": {
+          "selected_take": "media\\input\\scene_3\\footage_98bf18bb36b5.mp4",
+          "selected_take_count": 1,
+          "pacing": "scene-aware pacing",
+          "continuity": "preserve visual continuity",
+          "editor_action": "Selected strongest available take and prepared continuity-safe edit."
+        },
+        "cinematography": [
+          "stable cinematic framing"
+        ],
+        "color_grade": "cinematic contrast",
+        "vfx": [
+          "clarity",
+          "vignette"
+        ],
+        "transitions": [
+          "fade in/out"
+        ],
+        "transition": "fade in/out",
+        "audio": [
+          "dialogue clarity",
+          "loudness normalization",
+          "protect emotional beats"
+        ],
+        "sound_execution": {
+          "audio_filter": "loudnorm",
+          "preserve_source_audio": true,
+          "music_ducking": true
+        },
+        "specialist_actions": {
+          "sound-agent": {
+            "speciality": "Dialogue and sound cleanup",
+            "recommendations": [
+              "Normalize dialogue loudness",
+              "Preserve original production audio",
+              "Duck music beneath dialogue"
+            ],
+            "execution": {
+              "audio_filter": "loudnorm",
+              "preserve_source_audio": true,
+              "music_ducking": true
+            }
+          },
+          "colour-agent": {
+            "speciality": "Cinematic colour treatment",
+            "recommendations": [
+              "Balance exposure",
+              "Preserve skin-tone consistency",
+              "Apply restrained cinematic contrast"
+            ],
+            "execution": {
+              "grade": "cinematic_contrast",
+              "contrast": 1.08,
+              "saturation": 1.04
+            }
+          },
+          "vfx-agent": {
+            "speciality": "Visual effects planning",
+            "recommendations": [
+              "Add restrained clarity",
+              "Use a subtle vignette",
+              "Avoid effects that obscure performance"
+            ],
+            "execution": {
+              "effects": [
+                "clarity",
+                "vignette"
+              ],
+              "intensity": "subtle"
+            }
+          }
+        },
+        "music": {
+          "enabled": true,
+          "track": "minimal_ambient",
+          "volume": 0.25,
+          "fade_in_seconds": 2.0,
+          "fade_out_seconds": 2.5,
+          "reason": "Selected minimal_ambient to provide subtle emotional depth and atmosphere without distracting or overwhelming dialogue.",
           "source": "AI Music Agent selected in-app original music bed"
         },
         "ai_direction": {
