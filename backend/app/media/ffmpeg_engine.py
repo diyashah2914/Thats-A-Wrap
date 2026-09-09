@@ -49,11 +49,11 @@ class FFmpegEngine:
             if fade_out>0 and trim_end>fade_out: mf+=f',afade=t=out:st={max(0,trim_end-fade_out):.3f}:d={fade_out:.3f}'
             mf+='[music]'
             if has_audio:
-                af=(f'[0:a]aresample=48000,loudnorm=I=-16:LRA=11:TP=-1.5,apad=pad_dur={trim_end:.3f}[dialogue];'+mf+f';[music]apad=pad_dur={trim_end:.3f}[music_full];[music_full][dialogue]sidechaincompress=threshold=0.02:ratio=5:attack=20:release=300[ducked];[dialogue][ducked]amix=inputs=2:duration=longest:dropout_transition=2:weights=1 1[mix];[mix]loudnorm=I=-16:LRA=11:TP=-1.5,atrim=0:{trim_end:.3f}[aout]')
+                af=(f'[0:a]aresample=48000,loudnorm=I=-16:LRA=11:TP=-1.5,apad=pad_dur={trim_end:.3f}[dialogue];'+mf+f';[music]apad=pad_dur={trim_end:.3f}[music_full];[music_full][dialogue]sidechaincompress=threshold=0.02:ratio=5:attack=20:release=300[ducked];[dialogue][ducked]amix=inputs=2:duration=longest:dropout_transition=2:weights=1 1[mix];[mix]loudnorm=I=-16:LRA=11:TP=-1.5,apad,atrim=0:{trim_end:.3f},asetpts=N/SR/TB[aout]')
             else: af=mf+';[music]apad=pad_dur=1[aout]'
             cmd += ['-filter_complex','[0:v]'+','.join(filters)+'[vout];'+af,'-map','[vout]','-map','[aout]','-c:v','libx264','-preset',settings.ffmpeg_preset,'-crf',str(settings.ffmpeg_crf),'-c:a','aac','-b:a','192k','-t',f'{trim_end:.3f}']
         else:
-            cmd += ['-vf',','.join(filters),'-an'] if not has_audio else ['-vf',','.join(filters),'-map','0:v:0','-map','0:a:0?','-c:a','aac','-b:a','192k','-af','loudnorm=I=-16:LRA=11:TP=-1.5','-t',f'{source_duration:.3f}']
+            cmd += ['-vf',','.join(filters),'-an'] if not has_audio else ['-vf',','.join(filters),'-map','0:v:0','-map','0:a:0?','-c:a','aac','-b:a','192k','-af',f'loudnorm=I=-16:LRA=11:TP=-1.5,apad,atrim=0:{source_duration:.3f},asetpts=N/SR/TB','-t',f'{source_duration:.3f}']
             if not has_audio: cmd += ['-map','0:v:0']
             cmd += ['-c:v','libx264','-preset',settings.ffmpeg_preset,'-crf',str(settings.ffmpeg_crf)]
         cmd += ['-threads','0','-movflags','+faststart',str(out)]; self._run(cmd); return str(out)
