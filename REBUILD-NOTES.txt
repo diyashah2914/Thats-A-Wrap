@@ -1,0 +1,28 @@
+THAT'S A WRAP! — AI AGENT + AUDIO/TRANSITION REBUILD 2.2.0
+
+This rebuild intentionally does NOT include backend/media/input, backend/media/output, state.json, node_modules, or .git. Keep your existing media/input and state.json when applying this over the current working project.
+
+What changed:
+- Director Agent: produces screenplay scene breakdowns and creative intent.
+- Editor Agent: scores footage takes and selects the strongest usable take.
+- Sound Agent: produces a concrete dialogue/mix treatment consumed by FFmpeg.
+- Music Agent: selects an in-app music bed and controls volume/fades.
+- Colour Agent: produces a concrete grade used by FFmpeg.
+- VFX Agent: produces concrete clarity/vignette/contextual effects used by FFmpeg.
+- QC Agent: checks video/audio streams AND audio/video duration alignment.
+- Production Agent: now plans and executes final assembly with crossfades and audio preservation; also handles recovery.
+- Scene audio fix: music/source mix now uses the longest stream and pads/trims to the full scene duration, preventing the 44s-audio/57s-video problem.
+- Final assembly: approved scenes use real video/audio crossfades when supported, with a reliable concat fallback.
+- Agents page: each agent now shows inputs, outputs, primary action, and last run instead of generic/random descriptions.
+- Profile page: more realistic production-workspace identity without inventing personal details.
+- App.tsx processing syntax is repaired.
+
+Gemini is optional. Without the key, deterministic fallback decisions still execute locally; the media engine still applies the resulting plans.
+
+After extracting over the current project:
+1. Keep your existing backend/media/input and state.json.
+2. In backend, start Uvicorn as before.
+3. In frontend, run: npm install
+4. Then: npm run dev
+5. Process a scene and verify its audio reaches the full video duration.
+6. Approve two scenes and assemble the final film to verify the crossfade + audio preservation.
