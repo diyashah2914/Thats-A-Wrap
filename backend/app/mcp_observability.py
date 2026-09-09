@@ -126,9 +126,9 @@ class MCPObservability:
                 dtype = str(ds.get("type", "")).lower()
                 name = str(ds.get("name", "")).lower()
                 uid = ds.get("uid") or ds.get("datasourceUid")
-                if dtype == "tempo" or "traces" in name:
+                if dtype == "tempo" and uid == "grafanacloud-traces":
                     tempo_uid = uid
-                if dtype == "loki" or "logs" in name:
+                if dtype == "loki" and uid == "grafanacloud-logs":
                     loki_uid = uid
 
             # 2) Query logs, traces and alerts through ONE MCP session.
