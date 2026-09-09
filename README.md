@@ -1,79 +1,844 @@
-# 🎬 That's a Wrap! — Submission Build
+# 🎬 That's a Wrap!
 
-An AI-assisted filmmaking control room designed around a real execution pipeline:
+> **AI-assisted filmmaking and post-production with real-time observability.**
 
-**Script → Director Agent → Scenes → Footage → Editor + Specialist Agents → FFmpeg → QC → Human Approval → Final Film**
+**That's a Wrap!** is an AI-assisted filmmaking and post-production platform that turns raw footage into production-ready scenes while giving filmmakers and developers a transparent view of what is actually happening behind the scenes.
 
-This repository is a self-contained contingency/submission build. It is intentionally local-first so the demo can run without a cloud deployment, while keeping Gemini, Google Cloud Storage, Cloud Run, ADK, and Grafana integration points ready.
+Instead of hiding the production pipeline behind a single **"Generate"** button, That's a Wrap! exposes the workflow:
 
-## What is genuinely implemented
+```text
+Footage
+   ↓
+AI Orchestration
+   ↓
+Editing / Production
+   ↓
+FFmpeg Rendering
+   ↓
+Quality Control
+   ↓
+Google Cloud Storage
+   ↓
+Real-Time Observability
+```
 
-### Person 1 — AI / Intelligent Production
-- Director Agent: screenplay → structured 10-scene breakdown
-- Editor Agent: ranks uploaded takes and returns structured edit decisions
-- Sound Agent
-- Music Agent
-- Colour Agent
-- VFX Agent
-- QC Agent: validates real media with ffprobe
-- Production Agent: diagnoses failed jobs and chooses retry/escalation strategy
-- Gemini structured-output integration when `GEMINI_API_KEY` is present
-- Deterministic fallback mode when Gemini is unavailable
-- Shared Pydantic contracts for scene/job/agent data
+The platform combines:
 
-### Person 2 — Media / Processing
-- Real video uploads
-- FFmpeg transcode/edit pipeline
-- H.264/AAC delivery output
-- Audio extraction
-- Audio normalization
-- Audio replacement
-- Audio mixing
-- Scene concatenation / final-film assembly
-- ffprobe-based QC
-- OpenCV thumbnail tooling
-- Persistent local media/state directories
+- Google Gemini
+- Google ADK
+- Grafana MCP
+- Grafana Cloud
+- OpenTelemetry
+- Grafana Tempo
+- Grafana Loki
+- Prometheus
+- Grafana Alerting
+- FFmpeg
+- OpenCV
+- Google Cloud Storage
+- Google Cloud Run
+- React
+- TypeScript
+- FastAPI
 
-### Platform / Demo Infrastructure
-- React + TypeScript frontend connected to FastAPI
-- Persistent JSON state so restarts don't erase the demo workspace
-- Processing jobs and statuses
-- Human review / approval
-- Agent status endpoint
-- Production activity feed
-- Prometheus metrics endpoint
-- Local Grafana + Prometheus stack
-- Dockerfile and Cloud Run manifest
+into one end-to-end filmmaking workflow.
 
-## Requirements
+---
 
-- Node.js 20+
+# ✨ Why That's a Wrap?
+
+Modern AI video tools can make the creative process feel magical — but that magic often comes at the cost of transparency.
+
+That's a Wrap! takes a different approach.
+
+The platform is designed around a simple principle:
+
+> **If the system says something happened, there should be real runtime evidence behind it.**
+
+That means the application does **not** intentionally invent:
+
+- fake AI activity
+- fake processing progress
+- fake cloud health
+- fake trace counts
+- fake logs
+- fake MCP calls
+- fake rendering results
+
+When information is unavailable, the system should say so.
+
+When an operation happens, the system can expose evidence from the actual runtime.
+
+---
+
+# 🚀 Core Features
+
+## 🎥 AI-Assisted Post-Production
+
+That's a Wrap! uses AI agents to assist with filmmaking and post-production decisions.
+
+The project includes agents for areas such as:
+
+- Direction
+- Editing
+- Production
+- Quality control
+- Specialist tasks
+
+The goal is not to replace deterministic media tooling with an AI model.
+
+Instead, AI helps reason about the production context while the actual media pipeline remains deterministic and testable.
+
+---
+
+# 🤖 Gemini + Google ADK Orchestration
+
+Google Gemini and the Google Agent Development Kit are used for autonomous orchestration.
+
+The production orchestrator can:
+
+```text
+Receive scene/job context
+        ↓
+Invoke Gemini / ADK
+        ↓
+Access Grafana MCP
+        ↓
+Inspect real observability data
+        ↓
+Return an evidence-based response
+        ↓
+Continue deterministic media processing
+```
+
+The architecture deliberately separates:
+
+```text
+AI Reasoning
+     │
+     │
+     ▼
+Gemini + Google ADK
+```
+
+from:
+
+```text
+Deterministic Production
+     │
+     ├── FFmpeg
+     ├── OpenCV
+     ├── QC
+     └── GCS
+```
+
+This means a slow AI call does not unnecessarily prevent the actual media pipeline from progressing.
+
+---
+
+# 🔌 Real Grafana MCP Integration
+
+Grafana MCP is a real runtime dependency — not a decorative integration.
+
+The backend connects to a deployed Grafana MCP server using **Streamable HTTP**.
+
+The MCP server exposes Grafana capabilities to both:
+
+```text
+That's a Wrap Backend
+```
+
+and:
+
+```text
+Gemini / Google ADK
+```
+
+The runtime has successfully exercised real MCP tools including:
+
+```text
+list_datasources
+query_loki_logs
+tempo_traceql-search
+alerting_manage_rules
+list_loki_label_names
+list_loki_label_values
+query_prometheus
+list_prometheus_metric_names
+```
+
+The application's Diagnostics page exposes the MCP connection and actual tool activity returned by the server.
+
+---
+
+# 🧠 AI + MCP Architecture
+
+```text
+                         ┌─────────────────────────┐
+                         │       Web Frontend       │
+                         │      React + Vite        │
+                         └────────────┬────────────┘
+                                      │
+                                      │ HTTP
+                                      ▼
+                         ┌─────────────────────────┐
+                         │      FastAPI Backend     │
+                         │      That's a Wrap API   │
+                         └────────────┬────────────┘
+                                      │
+                    ┌─────────────────┼─────────────────┐
+                    │                 │                 │
+                    ▼                 ▼                 ▼
+          ┌────────────────┐  ┌────────────────┐  ┌────────────────┐
+          │ Gemini + ADK   │  │ Media Workflow │  │ Google Cloud   │
+          │                │  │                │  │ Storage        │
+          │ AI reasoning   │  │ Deterministic  │  │                │
+          │ orchestration  │  │ production     │  │ Rendered media │
+          └───────┬────────┘  └───────┬────────┘  └────────────────┘
+                  │                   │
+                  │                   │
+                  ▼                   ▼
+          ┌────────────────┐  ┌────────────────┐
+          │   Grafana MCP  │  │     FFmpeg     │
+          │                │  │    + OpenCV    │
+          │ Runtime access │  │      + QC       │
+          │ to Grafana     │  │                │
+          └───────┬────────┘  └────────────────┘
+                  │
+                  ▼
+        ┌─────────────────────────────┐
+        │       Grafana Cloud         │
+        │                             │
+        │  Loki    Tempo    Prometheus│
+        │                             │
+        │       Grafana Alerting      │
+        └─────────────────────────────┘
+```
+
+---
+
+# 🔄 End-to-End Production Workflow
+
+A typical scene processing flow looks like this:
+
+```text
+┌───────────────────────┐
+│    Upload Footage     │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│ Create / Select       │
+│ Project               │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│ Create Scene          │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────────────────────────┐
+│          Start Production Job             │
+└───────────────────────┬───────────────────┘
+                        │
+             ┌──────────┴───────────┐
+             │                      │
+             ▼                      ▼
+┌──────────────────────┐  ┌──────────────────────┐
+│ Gemini / ADK         │  │ Deterministic Media  │
+│ Orchestration        │  │ Worker               │
+│                      │  │                      │
+│ • Reasoning          │  │ • FFmpeg             │
+│ • MCP                │  │ • Audio              │
+│ • Grafana inspection │  │ • Video              │
+└──────────┬───────────┘  └──────────┬───────────┘
+           │                         │
+           ▼                         ▼
+┌──────────────────────┐  ┌──────────────────────┐
+│ Grafana MCP          │  │ Rendered Media       │
+│                      │  │                      │
+│ • Loki               │  │ MP4                  │
+│ • Tempo              │  └──────────┬───────────┘
+│ • Alerting            │             │
+└──────────────────────┘             ▼
+                            ┌──────────────────────┐
+                            │ Quality Control      │
+                            │                      │
+                            │ • Duration           │
+                            │ • Audio              │
+                            │ • Video              │
+                            │ • Validation         │
+                            └──────────┬───────────┘
+                                       │
+                                       ▼
+                            ┌──────────────────────┐
+                            │ Google Cloud Storage │
+                            └──────────────────────┘
+```
+
+The AI orchestration and media pipeline run independently so that observability analysis does not unnecessarily delay rendering.
+
+---
+
+# 📊 Grafana Cloud Observability
+
+The backend emits OpenTelemetry telemetry to Grafana Cloud.
+
+The observability stack uses:
+
+| Component | Purpose |
+|---|---|
+| Grafana Tempo | Distributed traces |
+| Grafana Loki | Application logs |
+| Prometheus | Metrics |
+| Grafana Alerting | Alert state |
+| Grafana MCP | Runtime access to Grafana |
+
+The backend service is identified as:
+
+```text
+thats-a-wrap-backend
+```
+
+Real traces have been observed for endpoints including:
+
+```text
+GET /diagnostics/mcp
+GET /observability/links
+GET /agents/status
+GET /diagnostics/activity
+GET /diagnostics
+```
+
+---
+
+# 🔭 OpenTelemetry → Grafana Cloud
+
+The telemetry path looks like this:
+
+```text
+┌──────────────────────────┐
+│      FastAPI Backend     │
+│                          │
+│ thats-a-wrap-backend     │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│    OpenTelemetry SDK     │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│    Grafana Cloud OTLP    │
+└────────────┬─────────────┘
+             │
+       ┌─────┼─────┐
+       │     │     │
+       ▼     ▼     ▼
+     Tempo  Loki  Metrics
+```
+
+This makes application activity searchable in Grafana Cloud.
+
+---
+
+# 🔎 Runtime Evidence Control Room
+
+The Diagnostics page is designed as an observability control room rather than a static status page.
+
+It can display:
+
+- MCP connection state
+- MCP tool count
+- Grafana datasource information
+- Loki log results
+- Tempo trace results
+- Grafana alert rules
+- exact LogQL queries
+- exact TraceQL queries
+- MCP tool arguments
+- MCP tool success/failure
+- ADK execution state
+- Gemini/ADK function-call counts
+- MCP invocation evidence
+- live production activity
+- job and scene events
+- failure information
+
+The objective is to make the system **inspectable**.
+
+---
+
+# 🛰️ MCP Runtime Architecture
+
+There are two separate credential paths.
+
+## MCP Server → Grafana Cloud
+
+The deployed Grafana MCP server uses its Grafana service-account credential to communicate with Grafana Cloud.
+
+## Application → MCP Server
+
+The That's a Wrap! backend authenticates to the MCP server using the MCP server caller token.
+
+Conceptually:
+
+```text
+┌──────────────────────────────┐
+│   That's a Wrap Backend      │
+└──────────────┬───────────────┘
+               │
+               │ Bearer authentication
+               ▼
+┌──────────────────────────────┐
+│   Grafana MCP on Cloud Run   │
+└──────────────┬───────────────┘
+               │
+               │ Grafana service account
+               ▼
+┌──────────────────────────────┐
+│       Grafana Cloud          │
+│                              │
+│ Loki / Tempo / Prometheus    │
+│ Alerting / Datasources       │
+└──────────────────────────────┘
+```
+
+Keeping these credentials separate makes the integration easier to reason about and secure.
+
+---
+
+# 🔌 MCP Runtime Evidence
+
+The project includes runtime verification utilities.
+
+For example:
+
+```bash
+python backend/verify_grafana_mcp.py
+```
+
+The MCP diagnostics endpoint is:
+
+```text
+GET /diagnostics/mcp
+```
+
+The live MCP observability endpoint is:
+
+```text
+GET /observability/mcp
+```
+
+The endpoint can return:
+
+```text
+MCP connection
+Tool count
+Grafana datasources
+Loki logs
+Tempo traces
+Alert state
+MCP tool activity
+Queries
+Errors
+Timestamps
+```
+
+This gives the application a concrete runtime path for proving MCP participation.
+
+---
+
+# 🤖 ADK Runtime Evidence
+
+The production orchestrator records information about ADK execution.
+
+The Diagnostics UI can expose:
+
+```text
+Executed
+Degraded
+MCP invoked
+Function calls
+Function responses
+Job
+Scene
+MCP tools
+Tool arguments
+Final response
+Errors
+```
+
+The ADK agent is intentionally instructed to avoid fabricating telemetry.
+
+When matching Grafana data does not exist, the expected behavior is to report that no matching telemetry was returned rather than inventing a result.
+
+---
+
+# 📡 Example Grafana Queries
+
+## Loki
+
+The application can query application logs using LogQL:
+
+```logql
+{service_name="thats-a-wrap-backend"}
+```
+
+For post-production activity:
+
+```logql
+{service_name="thats-a-wrap-backend"} |= "post-production"
+```
+
+These logs can be inspected directly in Grafana Explore.
+
+---
+
+## Tempo
+
+The application can query traces using TraceQL:
+
+```traceql
+{ resource.service.name = "thats-a-wrap-backend" }
+```
+
+For job/scene-specific investigation, the query can be narrowed using job or scene attributes when those attributes are available.
+
+---
+
+# 🎞️ Real Media Processing
+
+That's a Wrap! uses **FFmpeg** for actual media rendering.
+
+The renderer supports:
+
+- video processing
+- audio mixing
+- background music
+- audio normalization
+- audio resampling
+- trimming
+- padding
+- timestamp correction
+- MP4 generation
+
+The current performance-oriented FFmpeg configuration uses:
+
+```text
+Preset: superfast
+CRF: 21
+Threads: automatic
+```
+
+The goal is to keep demo rendering responsive while maintaining useful visual quality.
+
+---
+
+# 🧪 Quality Control
+
+Rendered scenes are not simply assumed to be valid.
+
+The workflow performs media checks including:
+
+- video duration
+- audio duration
+- duration mismatch
+- output validation
+- render success/failure
+
+During development, the QC pipeline caught a real mismatch:
+
+```text
+Video duration: 41.4 seconds
+Audio duration: 39.6 seconds
+Difference:     1.8 seconds
+```
+
+The renderer was subsequently updated to handle audio synchronization using FFmpeg filters including:
+
+```text
+aresample=48000:async=1:first_pts=0
+apad
+atrim
+asetpts
+```
+
+Music tracks are similarly padded/trimmed and the final mixed audio is normalized to the expected duration.
+
+This is an important design principle:
+
+> **A successful FFmpeg process does not automatically mean that the final scene is valid.**
+
+---
+
+# ☁️ Google Cloud Storage
+
+Rendered assets can be uploaded to Google Cloud Storage.
+
+The backend uses Google Cloud authentication through Application Default Credentials.
+
+The workflow can therefore move from:
+
+```text
+Local Media
+     │
+     ▼
+FFmpeg Render
+     │
+     ▼
+Quality Control
+     │
+     ▼
+Google Cloud Storage
+```
+
+For demonstrations, actual bucket objects can be inspected directly rather than relying on a generic Google Cloud landing page.
+
+---
+
+# 🖥️ Frontend
+
+The frontend is built with:
+
+- React
+- TypeScript
+- Vite
+
+Major screens include:
+
+```text
+Projects
+Open Project
+New Project
+Scenes
+New Scene
+Upload Footage
+Review Scenes
+Activity
+Agents
+Diagnostics
+Settings
+Profile
+```
+
+The **Diagnostics** screen acts as the technical control room for the application.
+
+---
+
+# 🗂️ Project Structure
+
+```text
+That's-A-Wrap/
+│
+├── backend/
+│   │
+│   ├── adk_app/
+│   │   ├── __init__.py
+│   │   └── agent.py
+│   │
+│   ├── app/
+│   │   ├── agents/
+│   │   │   ├── director.py
+│   │   │   ├── editor.py
+│   │   │   ├── gemini_client.py
+│   │   │   ├── production.py
+│   │   │   ├── qc.py
+│   │   │   └── specialists.py
+│   │   │
+│   │   ├── media/
+│   │   │   ├── ffmpeg_engine.py
+│   │   │   └── opencv_tools.py
+│   │   │
+│   │   ├── schemas/
+│   │   │   └── contracts.py
+│   │   │
+│   │   ├── services/
+│   │   │   ├── adk_orchestrator.py
+│   │   │   └── workflow.py
+│   │   │
+│   │   ├── storage/
+│   │   │   └── gcs.py
+│   │   │
+│   │   ├── config.py
+│   │   ├── grafana_live.py
+│   │   ├── main.py
+│   │   ├── mcp_grafana.py
+│   │   ├── mcp_observability.py
+│   │   ├── observability.py
+│   │   └── store.py
+│   │
+│   ├── tests/
+│   │   └── test_contracts.py
+│   │
+│   ├── Dockerfile
+│   ├── cloudrun.yaml
+│   ├── pyproject.toml
+│   ├── requirements.txt
+│   ├── test_mcp_runtime.py
+│   ├── verify_google_cloud.py
+│   └── verify_grafana_mcp.py
+│
+├── frontend/
+│   │
+│   ├── public/
+│   │
+│   └── src/
+│       ├── pages/
+│       │   ├── Activity.tsx
+│       │   ├── Agents.tsx
+│       │   ├── Diagnostics.tsx
+│       │   ├── NewProject.tsx
+│       │   ├── NewScene.tsx
+│       │   ├── OpenProject.tsx
+│       │   ├── Profile.tsx
+│       │   ├── Projects.tsx
+│       │   ├── ReviewScenes.tsx
+│       │   ├── Scenes.tsx
+│       │   ├── Settings.tsx
+│       │   └── UploadFootage.tsx
+│       │
+│       ├── App.tsx
+│       ├── App.css
+│       ├── api.ts
+│       └── index.css
+│
+├── grafana-mcp/
+│   ├── README.md
+│   └── .env.example
+│
+├── observability/
+│   ├── grafana/
+│   │   ├── dashboard.json
+│   │   └── provisioning/
+│   │       ├── dashboards/
+│   │       └── datasources/
+│   │
+│   ├── loki-config.yml
+│   ├── prometheus.yml
+│   ├── tempo-config.yml
+│   └── docker-compose.yml
+│
+├── CLOUD_MCP_RUNTIME_UPDATE.md
+├── CONTRACTS.md
+├── FINAL_DEMO_RUNTIME_UPDATE.md
+├── README_DIAGNOSTICS_MCP_FIX.md
+├── REBUILD_CHANGELOG.md
+├── REBUILD_NOTES.md
+├── SECURITY.md
+├── SUBMISSION_DEMO.md
+├── LICENSE
+└── README.md
+```
+
+---
+
+# 🛠️ Technology Stack
+
+| Area | Technology |
+|---|---|
+| Frontend | React + TypeScript |
+| Build | Vite |
+| Backend | Python + FastAPI |
+| AI | Google Gemini |
+| Agent Framework | Google ADK |
+| Agent Observability | Grafana MCP |
+| MCP Transport | Streamable HTTP |
+| Observability | OpenTelemetry |
+| Traces | Grafana Tempo |
+| Logs | Grafana Loki |
+| Metrics | Prometheus |
+| Alerting | Grafana Alerting |
+| Video | FFmpeg |
+| Computer Vision | OpenCV |
+| Cloud Storage | Google Cloud Storage |
+| Cloud Runtime | Google Cloud Run |
+| Observability Platform | Grafana Cloud |
+
+---
+
+# ⚙️ Local Development
+
+## Prerequisites
+
+You will need:
+
 - Python 3.11+
-- FFmpeg + ffprobe on PATH
-- Optional: Gemini API key
-- Optional: Docker Desktop for Grafana
+- Node.js
+- npm
+- FFmpeg
+- Google Cloud credentials
+- Gemini API credentials
+- Grafana Cloud credentials/configuration if using the live MCP path
 
-## Run locally
+---
 
-### 1. Backend
+# 1. Clone the Repository
+
+```bash
+git clone https://github.com/diyashah2914/Thats-A-Wrap.git
+cd Thats-A-Wrap
+```
+
+---
+
+# 2. Backend Environment
+
+Create the local backend environment:
 
 ```bash
 cd backend
 python -m venv .venv
-# Windows
-.venv\\Scripts\\activate
-# macOS/Linux
-source .venv/bin/activate
-pip install -r requirements.txt
-copy .env.example .env
-python -m uvicorn app.main:app --reload --port 8000
 ```
 
-Health: http://localhost:8000/health  
-API docs: http://localhost:8000/docs  
-Metrics: http://localhost:8000/metrics
+## Windows
 
-### 2. Frontend
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+## macOS / Linux
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create your local environment file from:
+
+```text
+backend/.env.example
+```
+
+Do **not** commit your `.env`.
+
+---
+
+# 3. Start the Backend
+
+From the project root, the included Windows helper can be used:
+
+```powershell
+.\run-backend.bat
+```
+
+Or run FastAPI directly:
+
+```bash
+cd backend
+uvicorn app.main:app --reload --port 8000
+```
+
+---
+
+# 4. Start the Frontend
 
 Open another terminal:
 
@@ -83,235 +848,499 @@ npm install
 npm run dev
 ```
 
-Open the Vite URL, normally http://localhost:5173.
+The Vite development server will provide the frontend URL.
 
-### 3. Grafana
+---
 
-Keep the backend running, then in another terminal:
+# 🔐 Environment Variables
+
+The exact configuration is documented in:
+
+```text
+backend/.env.example
+frontend/.env.example
+grafana-mcp/.env.example
+```
+
+Typical backend configuration includes:
+
+```text
+GEMINI_API_KEY
+GRAFANA_MCP_URL
+GRAFANA_MCP_SERVER_TOKEN
+GRAFANA_URL
+OTEL_EXPORTER_OTLP_ENDPOINT
+OTEL_EXPORTER_OTLP_HEADERS
+GOOGLE_CLOUD_PROJECT
+GCS_BUCKET
+```
+
+Use your own credentials.
+
+## Never Commit
+
+```text
+.env
+API keys
+service-account credentials
+MCP bearer tokens
+Grafana service-account tokens
+OTLP authentication headers
+private certificates
+```
+
+The repository's `.gitignore` is configured to keep local secrets and development environments out of Git.
+
+---
+
+# 🧪 Verification
+
+The project contains several verification utilities.
+
+## Backend Import
 
 ```bash
-cd observability
-docker compose up -d
+python -c "from app.main import app; print('BACKEND OK')"
 ```
 
-Grafana: http://localhost:3000  
-Prometheus: http://localhost:9090
+## Grafana MCP
 
-The dashboard is provisioned automatically. Prometheus scrapes the backend's `/metrics` endpoint.
-
-## Demo script
-
-1. Open **Projects**.
-2. Create a project and paste/import a screenplay as `.txt`.
-3. The Director Agent creates 10 structured scenes.
-4. Open **Scenes** and upload a real MP4/MOV/AVI/MKV/WebM/M4V clip.
-5. Process the scene.
-6. The Editor Agent ranks takes; Sound, Music, Colour and VFX agents generate plans.
-7. FFmpeg creates the real processed output.
-8. QC validates the output.
-9. Open **Review Scenes** and play the real video.
-10. Approve the scene.
-11. Repeat for additional scenes.
-12. Open the project and click **Assemble Final Film**.
-13. Watch the assembled final output.
-14. Open Grafana to show job counts, agent calls, failures and processing time.
-
-## Gemini
-
-Create `backend/.env` and set:
-
-```env
-GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gemini-3.7-flash
+```bash
+python backend/verify_grafana_mcp.py
 ```
 
-Without a key, Director and Editor use deterministic fallback logic so the media pipeline remains demoable.
+## Google Cloud
 
-## Architecture
+```bash
+python backend/verify_google_cloud.py
+```
+
+## MCP Runtime Test
+
+```bash
+python backend/test_mcp_runtime.py
+```
+
+## Backend Diagnostics
 
 ```text
-React / TypeScript
-        ↓
-     FastAPI
-        ↓
-  ┌───────────────┐
-  │ Agent Layer   │
-  │ Director      │
-  │ Editor        │
-  │ Sound         │
-  │ Music         │
-  │ Colour        │
-  │ VFX           │
-  │ QC            │
-  │ Production    │
-  └───────┬───────┘
-          ↓
-     Processing Job
-          ↓
-    FFmpeg / OpenCV
-          ↓
-       QC Result
-          ↓
-    Human Approval
-          ↓
-     Final Assembly
-          ↓
-       Film Output
-
-Telemetry → OTLP → Grafana Cloud Tempo
-
-Live UI telemetry → FastAPI `/observability/live` → Grafana Cloud/Tempo (server-side token) → sanitized React view
-
-Local metrics → /metrics → Prometheus → Grafana
+http://127.0.0.1:8000/diagnostics
 ```
 
-## Submission positioning
-
-This build is designed to demonstrate the core product loop, not to claim Hollywood-grade autonomous filmmaking. The strongest demo story is that AI makes structured production decisions, deterministic media infrastructure executes those decisions, QC validates the output, a human approves the result, and the production control room exposes operational telemetry.
-
-## Shared contract
-
-The canonical names are defined in `backend/app/schemas/contracts.py`. Avoid changing `project_id`, `scene_id`, `job_id`, `status`, `input_files`, `output`, and the job/scene status values without coordinating across the team.
-
-
-## Production Diagnostics + Grafana MCP
-
-The app includes a **Production Diagnostics** page in the System navigation. It runs safe, secret-free checks for the API, FFmpeg, OpenCV, Gemini mode, OTLP configuration, and Grafana MCP configuration. It also shows recent failed post-production jobs and provides a safe **Retry / recover** action for failed jobs.
-
-Grafana MCP remains a separate observability client: it queries telemetry stored in Grafana (Tempo/Loki/Mimir) through the MCP server. The Diagnostics page does not expose tokens or pretend to be the MCP server; it provides local failure context and ready-made MCP investigation prompts.
-
-The VS Code MCP configuration is preserved at `.vscode/mcp.json` and targets Grafana's hosted MCP endpoint. The production ADK agent uses the official `grafana/mcp-grafana` server deployed on Cloud Run and connects to it over Streamable HTTP using the service-account credential supplied by deployment secrets. Grafana and OTLP credentials remain outside source control.
-
-
-## Reliability update — persistent post-production jobs
-
-The post-production job registry is persisted in `backend/media/state.json` and reloaded on backend startup. If a backend restart interrupts a `PENDING`, `PROCESSING`, or `RETRYING` job, the job is explicitly marked `FAILED` with a recovery message and its scene is moved out of `PROCESSING`. This prevents stale processing states and lets the Diagnostics Error Center retry the job safely.
-
-The frontend also has a polling safety timeout and detects missing jobs instead of spinning forever. Recovery is scheduled as a background operation rather than blocking the Diagnostics page.
-
-Uploading footage no longer falsely marks a scene as actively processing; the user must explicitly start AI post-production.
-
-
-## Live Grafana telemetry in the app
-
-The Agents page now polls `/observability/live` every five seconds. The backend queries Grafana Cloud's Tempo datasource server-side and returns sanitized recent traces. No Grafana credential is sent to the browser.
-
-Set `GRAFANA_URL`, `GRAFANA_OBSERVABILITY_TOKEN`, and preferably `GRAFANA_TEMPO_DATASOURCE_UID` in `backend/.env`. For the website, use a dedicated read/query credential with only the permissions needed to read/query the Tempo datasource. Keep the existing Grafana MCP credential separate.
-
-The browser only needs `VITE_API_URL` in `frontend/.env`.
-
-
-## Observability rebuild (v3)
-
-The contingency build now treats observability as a first-class subsystem.
-
-### What changed
-
-- `backend/app/config.py` loads the **same** `backend/.env` for Pydantic settings and runtime configuration. This fixes the previous bug where `.env` values were visible to `Settings()` but invisible to `os.getenv()`.
-- OpenTelemetry now reads `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` from `settings`. If the endpoint is absent, the app does not create a fake localhost exporter.
-- Structured application logs are exported through the same OTLP gateway as traces (`/v1/logs`), so Grafana/Loki can correlate detailed activity with traces without a custom Loki client.
-- The Diagnostics page shows core runtime health, all registered agents, job failures, OTLP configuration, Grafana API health, MCP server health, and a detailed persistent event stream.
-- Detailed diagnostic events are persisted in `backend/media/state.json` under `diagnostic_events`.
-- Local Docker observability now includes Prometheus, Loki, Tempo and Grafana.
-- Tempo MCP is enabled in the local Tempo configuration.
-- `grafana-mcp/` documents and runs the official Grafana MCP server on port 8001 in read-only SSE mode.
-- Grafana MCP credentials remain separate from the backend's read/query credential.
-
-### The 401 fix
-
-The original application had a configuration split:
-
-1. `pydantic-settings` loaded `backend/.env` through `SettingsConfigDict(env_file=".env")`.
-2. `main.py` then read OTLP and Grafana variables with `os.getenv()`.
-3. `os.getenv()` was empty when the variables existed only in `.env`.
-4. The OTLP exporter therefore sent no Grafana authorization header and Grafana returned `401 Unauthorized`.
-
-The rebuilt version uses `settings.otel_exporter_otlp_endpoint` and `settings.otel_exporter_otlp_headers` directly. Grafana Cloud's documented direct OTLP configuration uses the OTLP gateway endpoint plus an `Authorization=Basic ...` header. Keep the exact values supplied by your Grafana Cloud stack in `backend/.env`.
-
-### Verification
-
-From `backend`:
-
-```powershell
-python -c "from app.config import settings; print(bool(settings.grafana_url), bool(settings.otel_exporter_otlp_endpoint), bool(settings.otel_exporter_otlp_headers))"
-```
-
-Then:
-
-```powershell
-python -m uvicorn app.main:app --reload --port 8000
-```
-
-Open `/docs` and run:
-
-- `GET /diagnostics`
-- `POST /diagnostics/run`
-- `GET /diagnostics/activity`
-
-Run Grafana MCP separately:
-
-```powershell
-cd grafana-mcp
-.
-un-grafana-mcp.ps1
-```
-
-Then confirm:
-
-`http://localhost:8001/healthz`
-
-### Architecture
+## MCP Diagnostics
 
 ```text
-That's a Wrap!
-      |
-      +--> FastAPI / agents / media / jobs
-      |          |
-      |          +--> structured diagnostic events
-      |          +--> OpenTelemetry traces
-      |          +--> Prometheus metrics
-      |
-      +--> Diagnostics UI
-      |          |
-      |          +--> local application state
-      |          +--> Grafana / Tempo preview (server-side)
-      |          +--> MCP health/configuration
-      |
-      +--> Grafana MCP
-                 |
-                 +--> Prometheus / PromQL
-                 +--> Loki / LogQL
-                 +--> Grafana dashboards
-                 +--> alerting / incident workflows
-                 +--> Tempo trace tools via Grafana's proxied MCP support
+http://127.0.0.1:8000/diagnostics/mcp
 ```
 
-## Google Cloud runtime integration
-
-That's a Wrap! uses Google Cloud at runtime in two ways:
-
-- Gemini + Google ADK power the AI production workflow.
-- Google Cloud Storage stores successfully processed scene renders and final-film assets when `GCS_BUCKET` is configured.
-
-The backend uses Google Cloud Application Default Credentials (ADC), so no service-account private key is stored in the repository.
-
-For local development, authenticate with:
-
-```powershell
-gcloud auth application-default login
-```
-
-Then set these non-secret settings in `backend/.env`:
+## Live MCP Observability
 
 ```text
-GOOGLE_CLOUD_PROJECT=your-google-cloud-project-id
-GCS_BUCKET=your-unique-gcs-bucket-name
+http://127.0.0.1:8000/observability/mcp
 ```
 
-Verify without printing credentials:
+---
 
-```powershell
-python backend\verify_google_cloud.py
+# 📊 Demonstrating the Observability Pipeline
+
+A strong demonstration should show the complete chain rather than only the frontend.
+
+## Step 1 — Start the Backend
+
+Confirm that the API is running.
+
+## Step 2 — Open the Diagnostics Page
+
+Show:
+
+- Grafana MCP connected
+- real MCP tool count
+- Grafana datasources
+- Tempo traces
+- Loki logs
+- alert state
+- MCP tool activity
+
+## Step 3 — Start a Production Scene
+
+Run an actual scene through the workflow.
+
+## Step 4 — Show Production Activity
+
+The application should record scene/job activity.
+
+## Step 5 — Show Grafana Loki
+
+In Grafana Explore, select the Loki datasource and query:
+
+```logql
+{service_name="thats-a-wrap-backend"}
 ```
 
-A successful scene post-production uploads the rendered MP4 to `gs://<bucket>/scenes/...`, and final assembly uploads to `gs://<bucket>/projects/.../final/...`.
+Or:
+
+```logql
+{service_name="thats-a-wrap-backend"} |= "post-production"
+```
+
+## Step 6 — Show Grafana Tempo
+
+Search for:
+
+```traceql
+{ resource.service.name = "thats-a-wrap-backend" }
+```
+
+## Step 7 — Return to That's a Wrap!
+
+The Diagnostics screen can show the corresponding runtime evidence.
+
+## Step 8 — Show the Rendered Result
+
+Demonstrate:
+
+```text
+Rendered MP4
+     ↓
+Quality Control
+     ↓
+Cloud Storage
+```
+
+This creates an end-to-end demonstration rather than a collection of disconnected technologies.
+
+---
+
+# 🏆 What Makes This Project Different?
+
+There are many AI applications that can generate a response.
+
+That's a Wrap! focuses on something different:
+
+# AI That Can Be Investigated
+
+The project connects AI orchestration to an actual production pipeline and then connects that pipeline to real observability infrastructure.
+
+The result is a system where you can ask:
+
+> **What did the AI do?**
+
+> **What did the media pipeline do?**
+
+> **Did the render actually happen?**
+
+> **What telemetry exists?**
+
+> **What did Grafana observe?**
+
+> **Did MCP actually participate?**
+
+And the application is designed to answer those questions with runtime evidence wherever possible.
+
+---
+
+# 🧩 Design Principles
+
+## 1. Truthful Telemetry
+
+No fake counters or invented operational state.
+
+---
+
+## 2. Deterministic Media Processing
+
+Critical media operations remain deterministic and testable.
+
+---
+
+## 3. AI as an Orchestrator
+
+Gemini/ADK can reason about production context without becoming the only source of truth.
+
+---
+
+## 4. Observable by Design
+
+Telemetry is part of the architecture rather than something added at the end.
+
+---
+
+## 5. MCP as a Runtime Integration
+
+Grafana MCP is actually invoked rather than simply mentioned in documentation.
+
+---
+
+## 6. Graceful Uncertainty
+
+If the system cannot obtain evidence, it should report:
+
+```text
+No matching Grafana telemetry was returned.
+```
+
+rather than manufacture an answer.
+
+---
+
+# 🔒 Security
+
+Secrets are intentionally excluded from the repository.
+
+Before deploying your own instance:
+
+1. Create your own Gemini API key.
+2. Configure your own Grafana credentials.
+3. Configure your own MCP server token.
+4. Configure your own Google Cloud authentication.
+5. Configure your own GCS bucket.
+6. Keep `.env` files outside version control.
+7. Rotate any credentials that may have been exposed during development.
+
+See:
+
+```text
+SECURITY.md
+```
+
+for additional project-specific security information.
+
+---
+
+# 📚 Additional Documentation
+
+The repository includes deeper documentation for different audiences.
+
+| Document | Purpose |
+|---|---|
+| `SUBMISSION_DEMO.md` | Demo and presentation flow |
+| `FINAL_DEMO_RUNTIME_UPDATE.md` | Final runtime implementation |
+| `CLOUD_MCP_RUNTIME_UPDATE.md` | Cloud/MCP implementation notes |
+| `README_DIAGNOSTICS_MCP_FIX.md` | Diagnostics/MCP troubleshooting |
+| `CONTRACTS.md` | API/data contracts |
+| `SECURITY.md` | Security guidance |
+| `REBUILD_CHANGELOG.md` | Major implementation changes |
+| `REBUILD_NOTES.md` | Rebuild notes |
+| `REBUILD-NOTES.txt` | Additional rebuild information |
+
+---
+
+# 🎥 Demo Assets
+
+For a polished presentation, the recommended screenshots include:
+
+1. **Main That's a Wrap! dashboard**
+2. **Scene production workflow**
+3. **Diagnostics / MCP control room**
+4. **Grafana Loki showing real backend logs**
+5. **Grafana Tempo showing a real backend trace**
+6. **Grafana MCP tool activity**
+7. **Rendered scene output**
+8. **GCS bucket containing actual rendered objects**
+
+Recommended future structure:
+
+```text
+docs/
+└── screenshots/
+    ├── dashboard.png
+    ├── production.png
+    ├── diagnostics.png
+    ├── grafana-loki.png
+    ├── grafana-tempo.png
+    ├── mcp-tools.png
+    ├── rendered-output.png
+    └── gcs-output.png
+```
+
+---
+
+# 🗺️ Future Improvements
+
+Potential future work includes:
+
+- richer scene-level AI editing recommendations
+- more advanced timeline editing
+- additional media formats
+- automated highlight detection
+- stronger scene continuity analysis
+- deeper GCS asset management
+- richer Tempo trace correlation
+- more granular job/scene observability
+- production dashboards
+- multi-user projects
+- authentication and authorization
+- deployment automation
+- additional MCP capabilities
+
+---
+
+# 🎬 Demo Story
+
+The project can be presented as a simple story:
+
+```text
+        🎥
+   RAW FOOTAGE
+        │
+        ▼
+   ┌───────────┐
+   │ AI + ADK  │
+   └─────┬─────┘
+         │
+         ▼
+   ┌───────────┐
+   │ MCP       │
+   │ + Grafana │
+   └─────┬─────┘
+         │
+         ▼
+   ┌───────────┐
+   │ FFmpeg    │
+   │ Rendering │
+   └─────┬─────┘
+         │
+         ▼
+   ┌───────────┐
+   │    QC     │
+   └─────┬─────┘
+         │
+         ▼
+   ┌───────────┐
+   │    GCS    │
+   └─────┬─────┘
+         │
+         ▼
+   ┌─────────────────┐
+   │ Grafana Cloud   │
+   │                 │
+   │ Loki + Tempo    │
+   │ + Metrics       │
+   └─────────────────┘
+```
+
+The key message:
+
+> **The AI makes decisions. The media pipeline does the work. Grafana lets us prove what happened.**
+
+---
+
+# 🧭 System Responsibility Map
+
+| Component | Responsibility |
+|---|---|
+| React | User interface |
+| FastAPI | Application API |
+| Gemini | AI reasoning |
+| Google ADK | Agent orchestration |
+| Grafana MCP | Runtime observability access |
+| FFmpeg | Media rendering |
+| OpenCV | Computer vision utilities |
+| QC | Output validation |
+| GCS | Cloud asset storage |
+| OpenTelemetry | Telemetry instrumentation |
+| Grafana Loki | Logs |
+| Grafana Tempo | Traces |
+| Prometheus | Metrics |
+| Grafana Alerting | Operational alerts |
+| Cloud Run | Cloud runtime |
+
+---
+
+# 💡 The Core Idea
+
+That's a Wrap! is built around a simple architecture:
+
+```text
+             CREATIVE LAYER
+                  │
+                  ▼
+        ┌──────────────────┐
+        │ Gemini + ADK     │
+        │ AI Orchestration │
+        └────────┬─────────┘
+                 │
+                 ▼
+           OBSERVABILITY
+                 │
+                 ▼
+        ┌──────────────────┐
+        │   Grafana MCP    │
+        └────────┬─────────┘
+                 │
+                 ▼
+        ┌──────────────────┐
+        │ Grafana Cloud    │
+        │ Loki / Tempo /   │
+        │ Prometheus       │
+        └──────────────────┘
+
+             PRODUCTION LAYER
+                  │
+                  ▼
+        ┌──────────────────┐
+        │ Deterministic    │
+        │ Media Workflow   │
+        └────────┬─────────┘
+                 │
+          ┌──────┼──────┐
+          ▼      ▼      ▼
+       FFmpeg  OpenCV   QC
+          │      │      │
+          └──────┼──────┘
+                 ▼
+        ┌──────────────────┐
+        │ Google Cloud     │
+        │ Storage          │
+        └──────────────────┘
+```
+
+---
+
+# 🌟 The Philosophy
+
+The project is ultimately about combining two things that are often treated separately:
+
+```text
+        CREATIVE AI
+             +
+       ENGINEERING
+             +
+      OBSERVABILITY
+             =
+      TRUSTWORTHY AI
+```
+
+AI can help create.
+
+Deterministic systems can execute.
+
+Observability can verify.
+
+That's a Wrap! brings those three layers together.
+
+---
+
+# 👥 Project
+
+## That's a Wrap!
+
+An AI-assisted filmmaking and post-production platform built around:
+
+> **Creativity + Automation + Real Media Processing + Observable AI**
+
+---
+
+# 📜 License
+
+See [`LICENSE`](LICENSE) for licensing information.
+
+---
+
+# ⭐ Final Thought
+
+That's a Wrap! explores a simple idea:
+
+> **AI should not only be capable of doing things — it should be possible to understand what it actually did.**
+
+🎬 **That's a Wrap!**
